@@ -1,0 +1,7 @@
+all_people: 제외할 사람 수를 뺴고 추첨할 인원수
+elxclname: 엑셀 파일 이름
+exptlist: 제외할 사람 이름
+loadsheet: 추첨할 시트 이름
+maxcout: 조당 최대 인원
+startsheet:  추첨할 리스트에 추가할 첫번째 시트
+endsheet: 추첨할 리스트에 추가할 마지막 시트
