@@ -25,18 +25,7 @@ pick_list = [] #뽑은 리스트
 
 
 execpt_list = [] #제외할 명단
-f = open("exeptlist.txt",'rt',encoding='utf-8')
-lines = f.readlines()
-for line in lines:
-    execpt_list.append(line)
 
-# print(execpt_list)
-execpt_list_print=""
-for i in execpt_list:
-    execpt_list_print = execpt_list_print + i
-    # print(execpt_list_print)
-print("제외할 명단:","\n",execpt_list_print)
-f.close()
 
 f = open("maxcount.txt",'r')
 line = f.readline()
@@ -44,11 +33,16 @@ max_count = int(line) #조당 최대 인원
 print("조당 최대 인원:" ,max_count)
 f.close()
 
-f = open("all_people.txt",'r')
-line = f.readline()
-all_people_num = int(line) #반 전체 인원 (제외할 인원수 뺀 인원수)
-print("반 전체 인원:" ,all_people_num)
-f.close()
+
+
+
+# f = open("all_people.txt",'r')
+# line = f.readline()
+# all_people_num = int(line) #반 전체 인원 (제외할 인원수 뺀 인원수)
+# print("반 전체 인원:" ,all_people_num)
+# f.close()
+
+
 
 group_1 = [] #1조 리스트
 group_2 = [] #2조 리스트
@@ -76,6 +70,30 @@ for row in ragne_cell:
     for cell in row:
         # print(cell.value)
         all_people.append(cell.value)
+
+f = open("exeptlist.txt",'rt',encoding='utf-8')
+lines = f.readlines()
+for line in lines:
+    if all_people in lines:
+        execpt_list.append(line)
+    else:
+        print("유효하지 않은 제외명단입니다."," 이름:",line)
+
+
+
+# print(execpt_list)
+execpt_list_print=""
+for i in execpt_list:
+    execpt_list_print = execpt_list_print + i
+    # print(execpt_list_print)
+print("제외할 명단:","\n",execpt_list_print)
+f.close()
+
+
+f = open("all_people.txt",'wt', encoding= 'utf-8')
+all_people_num = len(all_people)-len(execpt_list) #총인워수에서 제외할 인원수 뺸 숫자
+f.write(str(all_people_num))
+print(all_people_num)
 
 # def suc_pick(group_num,pick):
 #     print(group_num, "조:", pick)
