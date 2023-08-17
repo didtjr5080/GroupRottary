@@ -2,7 +2,7 @@ from openpyxl import load_workbook
 import random
 import  datetime as dt
 import os
-
+import re
 
 f = open("excelname.txt","r",encoding='utf-8')
 line=f.readline()
@@ -74,7 +74,11 @@ for row in ragne_cell:
 f = open("exeptlist.txt",'rt',encoding='utf-8')
 lines = f.readlines()
 for line in lines:
-    if all_people in lines:
+    # print(line)
+    line = line.replace("\n","")
+    line = line.replace(" ", "")
+    # print(all_people[all_people.index(lines)])
+    if line in all_people:
         execpt_list.append(line)
     else:
         print("유효하지 않은 제외명단입니다."," 이름:",line)
@@ -84,9 +88,9 @@ for line in lines:
 # print(execpt_list)
 execpt_list_print=""
 for i in execpt_list:
-    execpt_list_print = execpt_list_print + i
+    execpt_list_print = execpt_list_print + "\n" + i
     # print(execpt_list_print)
-print("제외할 명단:","\n",execpt_list_print)
+print("제외할 명단:",execpt_list_print)
 f.close()
 
 
@@ -248,43 +252,47 @@ except:
     os.mkdir("result") #만약 현재 디렉토리/result 디렉토리 열기 시도를 실패 한다면 result 폴더 생성
     # 조 추첨 결과 저장
     f = open(current_path + r"\result\\" + now_time + ".txt", 'x')  # 현재 디렉토리/result 디렉토리 열기 시도
-    f.write(g1_text)
-    f.write('\n')
-    f.write(g2_text)
-    f.write('\n')
-    f.write(g3_text)
-    f.write('\n')
-    f.write(g4_text)
-    f.write('\n')
-    f.write(g5_text)
-    f.write('\n')
-    f.write(g6_text)
-    f.write('\n')
-    f.write(g7_text)
-    f.write('\n')
-    f.write(g8_text)
-    f.write('\n')
-    f.close()
+    for i in range(1,5):
+        f.write(g1_text)
+    # f.write(g1_text)
+    # f.write('\n')
+    # f.write(g2_text)
+    # f.write('\n')
+    # f.write(g3_text)
+    # f.write('\n')
+    # f.write(g4_text)
+    # f.write('\n')
+    # f.write(g5_text)
+    # f.write('\n')
+    # f.write(g6_text)
+    # f.write('\n')
+    # f.write(g7_text)
+    # f.write('\n')
+    # f.write(g8_text)
+    # f.write('\n')
+    # f.close()
 else:
     #조 추첨 결과 저장
-    # f = open(current_path + r"\result\\" + now_time + ".txt", 'x')  # 현재 디렉토리/result 디렉토리 열기 시도
-    f.write(g1_text)
-    f.write('\n')
-    f.write(g2_text)
-    f.write('\n')
-    f.write(g3_text)
-    f.write('\n')
-    f.write(g4_text)
-    f.write('\n')
-    f.write(g5_text)
-    f.write('\n')
-    f.write(g6_text)
-    f.write('\n')
-    f.write(g7_text)
-    f.write('\n')
-    f.write(g8_text)
-    f.write('\n')
-    f.close()
+    f = open(current_path + r"\result\\" + now_time + ".txt", 'x')  # 현재 디렉토리/result 디렉토리 열기 시도
+
+    for i in range(1,5):
+        f.write(g1_text)
+    # f.write('\n')
+    # f.write(g2_text)
+    # f.write('\n')
+    # f.write(g3_text)
+    # f.write('\n')
+    # f.write(g4_text)
+    # f.write('\n')
+    # f.write(g5_text)
+    # f.write('\n')
+    # f.write(g6_text)
+    # f.write('\n')
+    # f.write(g7_text)
+    # f.write('\n')
+    # f.write(g8_text)
+    # f.write('\n')
+    # f.close()
 
 os.system('pause')
 # print("1조",group_1)
